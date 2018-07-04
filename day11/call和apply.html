@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function fun() {
+        console.log(this);
+    }
+
+    var obj ={
+        sayName:function (a,b) {
+            console.log(a);
+            console.log(b);
+            console.log(this.name);
+        }
+    };
+    obj.name = "obj";
+    var obj2 = {};
+    obj2.name = "obj2";
+    // fun.call(obj);
+    // fun.apply(obj2);
+    obj.sayName.call(obj2,1,2);
+    obj.sayName.apply(obj2,[2,3]);
+
+</script>
+</body>
+</html>
