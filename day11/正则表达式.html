@@ -7,7 +7,20 @@
 <body>
 
 <script>
-    var reg = /a/;
+  /*  var reg = /^[^ab]/;
+    // console.log(reg.test("d@dfsdbdfsdf@#23d"));
+    // console.log(reg.test("sdf"));
+    // console.log(reg.test("abc"));
+    // console.log(reg.test("1acbc"))
+    var str = "1a2b3c4d5f6e7A8B9C";
+    var result = str.split(/[A-z]/);
+    // console.log(result);
+    console.log(str.match(/[a-z]/gi));
+    console.log(Array.isArray(result));*/
+    var str = "       你好JS    ";
+    console.log(str);
+    console.log(str.replace(/\s/g,""));
+    console.log(str.replace(/^\s/g,""));
 </script>
 </body>
 </html>

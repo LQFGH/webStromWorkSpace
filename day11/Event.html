@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">我是按钮</button>
+<script>
+    var btn = document.getElementById("btn");
+    btn.onmousemove = function () {
+        btn.innerText = "不许再点我了";
+        alert("又点我了");
+    }
+</script>
+</body>
+</html>
