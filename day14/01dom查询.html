@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<link rel="stylesheet" type="text/css" href="style/css.css" />
+		<script type="text/javascript">
+
+            function MyClick(id, fun) {
+                var btn = document.getElementById(id);
+                btn.onclick = fun;
+            }
+
+            window.onload = function () {
+				var btn01 = document.getElementById("btn01");
+				var btn02 = document.getElementById("btn02");
+				var btn03 = document.getElementById("btn03");
+				var btn04 = document.getElementById("btn04");
+				var btn05 = document.getElementById("btn05");
+				var btn06 = document.getElementById("btn06");
+				var btn07 = document.getElementById("btn07");
+				var btn08 = document.getElementById("btn08");
+				var btn09 = document.getElementById("btn09");
+                var btn10 = document.getElementById("btn10");
+                var btn11 = document.getElementById("btn11");
+				btn01.onclick = function () {
+					var bj = document.getElementById("bj");
+					alert(bj.innerText);
+                }
+				btn02.onclick = function () {
+					var lis = document.getElementsByTagName("li");
+                    // lis.forEach(function (i) {
+						// console.log(i.innerText);
+                    // });
+					for (var i = 0; i < lis.length; i++){
+						console.log(lis[i].innerText);
+					}
+                }
+				btn03.onclick = function () {
+					var names = document.getElementsByName("gender");
+					for(var i = 0; i < names.length; i++){
+						console.log(names[i].value);
+					}
+                }
+
+                MyClick("btn04",function () {
+                    var city = document.getElementById("city");
+                    var lis = city.getElementsByTagName("li");
+                    for(var i = 0; i < lis.length; i++){
+                        console.log(lis[i].innerText);
+                    }
+                });
+
+                MyClick("btn05",function () {
+                    var city = document.getElementById("city");
+                    //获取元素下所有子节点（包含文本）
+                    var nodes = city.childNodes;
+                    //获取元素下所有子元素
+                    var children = city.children;
+                   /* for(var i = 0; i < nodes.length; i++){
+                        console.log(nodes[i]);
+                    }*/
+                   for(var i = 0; i < children.length; i++){
+                       console.log(children[i].innerHTML);
+                   }
+                })
+
+                MyClick("btn06",function () {
+                    var phone = document.getElementById("phone");
+                    var fir = phone.firstChild;
+                    alert(fir.innerText);
+                })
+
+                MyClick("btn07",function () {
+                    var bj = document.getElementById("bj");
+                    var parent = bj.parentNode;
+                    alert(parent.innerText);
+                })
+
+                MyClick("btn08",function () {
+                    var android = document.getElementById("android");
+                    var previousNode = android.previousElementSibling;
+                    alert(previousNode.innerHTML);
+                   /* var previousNode = android.previousSibling;
+                    alert(previousNode.innerHTML);*/
+                })
+
+                MyClick("btn09",function () {
+                    var username = document.getElementById("username");
+                    alert(username.value);
+                });
+
+                MyClick("btn10",function () {
+                    var username = document.getElementById("username");
+                    username.value = "李庆丰";
+                });
+
+                MyClick("btn11",function () {
+                    var bj = document.getElementById("bj");
+                   /* var input = prompt();
+                    alert(input)
+                    alert(bj.innerText);*/
+                   var bjtext = bj.firstChild;
+                   alert(bjtext);
+                   alert(bjtext.nodeValue);
+                });
+            }
+		</script>
+	</head>
+	<body>
+		<div id="total">
+			<div class="inner">
+				<p>
+					你喜欢哪个城市?
+				</p>
+
+				<ul id="city">
+					<li id="bj">北京</li>
+					<li>上海</li>
+					<li>东京</li>
+					<li>首尔</li>
+				</ul>
+
+				<br>
+				<br>
+
+				<p>
+					你喜欢哪款单机游戏?
+				</p>
+
+				<ul id="game">
+					<li id="rl">红警</li>
+					<li>实况</li>
+					<li>极品飞车</li>
+					<li>魔兽</li>
+				</ul>
+
+				<br />
+				<br />
+
+				<p>
+					你手机的操作系统是?
+				</p>
+
+				<ul id="phone">
+                    <li>IOS</li>
+                    <li id="android">Android</li>
+                    <li>Windows Phone</li>
+                </ul>
+			</div>
+
+			<div class="inner">
+				gender:
+				<input class="hello" type="radio" name="gender" value="male"/>
+				Male
+				<input class="hello" type="radio" name="gender" value="female"/>
+				Female
+				<br>
+				<br>
+				name:
+				<input type="text" name="name" id="username" value="abcde"/>
+			</div>
+		</div>
+		<div id="btnList">
+			<div><button id="btn01">查找#bj节点</button></div>
+			<div><button id="btn02">查找所有li节点</button></div>
+			<div><button id="btn03">查找name=gender的所有节点</button></div>
+			<div><button id="btn04">查找#city下所有li节点</button></div>
+			<div><button id="btn05">返回#city的所有子节点</button></div>
+			<div><button id="btn06">返回#phone的第一个子节点</button></div>
+			<div><button id="btn07">返回#bj的父节点</button></div>
+			<div><button id="btn08">返回#android的前一个兄弟节点</button></div>
+			<div><button id="btn09">返回#username的value属性值</button></div>
+			<div><button id="btn10">设置#username的value属性值</button></div>
+			<div><button id="btn11">返回#bj的文本值</button></div>
+		</div>
+	</body>
+</html>
