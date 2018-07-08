@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+
+        window.onload = function () {
+            var box = document.getElementById("box")
+            addEvent.call(box, "mousewheel", function (event) {
+                event = event || window.event;
+                var boxHeigth = box.clientHeight;
+                if (event.wheelDelta > 0 || event.detail > 0) {
+                    box.style.height = (boxHeigth + 20) + "px";
+                } else {
+                    if (box.clientHeight > 100)
+                    box.style.height = (boxHeigth - 20) + "px";
+                }
+                return false;
+            }, false);
+        }
+
+        function addEvent(eventStr, fun) {
+            this.addEventListener(eventStr, fun, false);
+        }
+
+    </script>
+
+</head>
+<body style="height: 2000px ;">
+<div id="box"></div>
+</body>
+</html>

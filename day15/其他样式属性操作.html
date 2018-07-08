@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #deal{
+            border: 5px black solid;
+            width: 200px;
+            height: 400px;
+            overflow: auto;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var deal = document.getElementById("deal");
+            var checkbox = document.getElementsByTagName("input")[0];
+            var submit = document.getElementsByTagName("input")[1];
+            deal.onscroll = function () {
+                console.log("clientHeight" + deal.clientHeight);
+                console.log("scrollHeight" + deal.scrollHeight);
+                console.log("scrollTop" + deal.scrollTop);
+                console.log("offsetHeight" + deal.offsetHeight);
+                if (deal.scrollHeight - deal.scrollTop == deal.clientHeight){
+                    checkbox.disabled = false;
+                }
+                checkbox.onclick = function () {
+                    if (checkbox.checked){
+                        submit.disabled = false;
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+    <h3>请仔细阅读协议</h3>
+    <p id="deal">
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+        请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议请仔细阅读协议
+    </p>
+    <input type="checkbox" disabled="disabled"/>已仔细阅读协议
+    <input type="submit" value="注册" disabled="disabled"/>
+
+</body>
+</html>

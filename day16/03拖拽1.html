@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 1000px;
+            width: 2000px;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        #box2{
+            left: 300px;
+            top: 300px;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            var img = document.getElementById("img");
+            drag(box1);
+            drag(box2);
+            drag(img);
+        }
+
+        /**
+         * 拖拽函数
+         * @param obj
+         */
+        function drag(obj) {
+            obj.onmousedown = function (event) {
+                var left = event.pageX;
+                var top = event.pageY;
+
+                var box1Left = obj.offsetLeft;
+                var box1Top = obj.offsetTop;
+
+                var MourseRelativeBoxLeft = left - box1Left;
+                var MourseRelativeBoxTop = top - box1Top;
+
+                document.onmousemove = function (e) {
+                    left = e.pageX;
+                    top = e.pageY;
+
+                    obj.style.left = (left - MourseRelativeBoxLeft) + "px";
+                    obj.style.top = (top - MourseRelativeBoxTop) + "px";
+
+                }
+
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                }
+                return false;
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <img src="img/1.jpg" id="img" style="position: absolute;"/>
+</body>
+</html>

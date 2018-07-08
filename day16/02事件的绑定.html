@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function addEvent(event, fun, obj){
+            if (obj.addEventListener)
+                obj.addEventListener(event, fun, false);
+            else{
+                obj.attachEvent("on" + event, function () {
+                    fun.call(obj);
+                });
+            }
+        }
+
+        window.onload = function () {
+            var btn = document.getElementById("btn");
+          /*  btn.onclick = function () {
+                alert(1);
+            };
+            btn.onclick = function () {
+                alert(2);
+            };*/
+            addEvent("click", function () {
+                alert(this);
+            }, btn);
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">点我一下</button>
+</body>
+</html>

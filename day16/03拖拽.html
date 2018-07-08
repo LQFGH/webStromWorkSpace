@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 1000px;
+            width: 2000px;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        #box2{
+            left: 300px;
+            top: 300px;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            
+            box1.onmousedown = function (event) {
+                var left = event.pageX;
+                var top = event.pageY;
+
+                var box1Left = box1.offsetLeft;
+                var box1Top = box1.offsetTop;
+
+                var MourseRelativeBoxLeft = left - box1Left;
+                var MourseRelativeBoxTop = top - box1Top;
+
+                document.onmousemove = function (e) {
+                    left = e.pageX;
+                    top = e.pageY;
+
+                    box1.style.left = (left - MourseRelativeBoxLeft) + "px";
+                    box1.style.top = (top - MourseRelativeBoxTop) + "px";
+
+                }
+
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                }
+                return false;
+            }
+        }
+    </script>
+
+</head>
+<body>
+    一段文字
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

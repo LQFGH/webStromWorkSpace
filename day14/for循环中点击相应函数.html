@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            for (var i = 0; i < 3; i++){
+                var btns = document.getElementsByTagName("button");
+                btns[i].onclick = function () {
+                    window.print();
+                    this.innerHTML = "按钮" + i;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+
+
+</body>
+</html>
