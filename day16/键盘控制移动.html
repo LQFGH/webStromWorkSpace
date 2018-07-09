@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin-left: 0px;
+            margin-top: 0px;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById("box");
+            document.onkeydown = function (event) {
+                fun.call(box,event);
+            }
+        }
+
+        function fun(event) {
+            //37\38\39\40
+            var offsetLeft = this.offsetLeft;
+            var offsetTop = this.offsetTop;
+
+            var speed = 10;
+            if (event.ctrlKey){
+                speed = 100;
+            }
+
+            switch(event.keyCode){
+                case 37:
+                    this.style.left = (offsetLeft - speed) + "px";
+                    break;
+                case 38:
+                    this.style.top = (offsetTop - speed) + "px";
+                    break;
+                case 39:
+                    this.style.left = (offsetLeft + speed) + "px";
+                    break;
+                case 40:
+                    this.style.top = (offsetTop + speed) + "px";
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

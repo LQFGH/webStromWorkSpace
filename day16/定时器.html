@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            position: relative;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            eachDiv.call(box);
+            for (var i = 0; i < 5; i++) generteRadomDiv();
+            var box = document.getElementById("box");
+            var timer;
+            document.onkeydown = function (event) {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    if (eachDiv.call(box)) alert("重合啦！！！");
+                    movenMouseDown.call(box,event);
+                }, 10);
+                document.onkeyup = function (event) {
+                    movenMouseUp.call(box,event,timer);
+                }
+            }
+        }
+
+        function movenMouseDown(event) {
+            var offsetL = this.offsetLeft;
+            var offsetT = this.offsetTop;
+            var speed = 10;
+            if (event.ctrlKey)
+                speed = 100;
+            switch (event.keyCode){
+                case 37:
+                    this.style.left = (offsetL - speed) + "px";
+                    break;
+                case 38:
+                    this.style.top = (offsetT - speed) + "px";
+                    break;
+                case 39:
+                    this.style.left = (offsetL + speed) + "px";
+                    break;
+                case 40:
+                    this.style.top = (offsetT + speed) + "px";
+                    break;
+            }
+        }
+
+        //键盘松开事件
+        function movenMouseUp(event,timer) {
+            clearInterval(timer);
+        }
+
+        //获取所有class为rondomDiv的div便利
+        function eachDiv() {
+            var divs = document.getElementsByClassName("randomDiv");
+            for (var i = 0; i < divs.length; i++){
+                return coincide.call(this,divs[i]);
+            }
+        }
+
+        //传入元素，判断元素是否与当前元素重合
+        function coincide(obj) {
+            var tW = this.clientWidth;
+            var tH = this.clientHeight;
+            var tL = this.offsetLeft;
+            var tT = this.offsetTop;
+            var oW = obj.clientWidth;
+            var oH = obj.clientHeight;
+            var oL = obj.offsetLeft;
+            var oT = obj.offsetTop;
+            if ((tL + tW) > oL && (oL + oW) > tL && (tT + tW) > oT && (oT + oW) > tT) return true;
+            else return false;
+        }
+
+        function generteRadomDiv() {
+                var dWidth = 10 + Math.round(Math.random() * 90);
+                var dHeight = 10 + Math.round(Math.random() * 90);
+                var dLeft = 20 + Math.round(Math.random() * 1200);
+                var dTop = 20 + Math.round(Math.random() * 400);
+                var div = document.createElement("div");
+                div.style.position = "relative";
+                div.style.width = dWidth + "px";
+                div.style.height = dHeight + "px";
+                div.style.left = dLeft + "px";
+                div.style.top = dTop + "px";
+                div.className = "randomDiv";
+                // div.style.borderRadius = "50%"
+                div.style.backgroundColor = "rgb("+ getRgb() +"," + getRgb() + "," + getRgb() +")";
+                console.log(div);
+                document.body.appendChild(div);
+        }
+
+        function getRgb() {
+            return Math.round(Math.random() * 255);
+        }
+
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
